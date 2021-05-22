@@ -1,0 +1,272 @@
+[
+  {
+    "name": "Zeus",
+    "description": "The God of Gods, the Emperor of Olympia, God of the skies and fate.",
+    "abilities": [
+      {
+        "name": "Arc Lightning",
+        "description": "Zeus strikes his enemies with Arc Lightning, dealing 10,000 damage",
+        "active": true,
+        "variant": "damage",
+        "value": 10000,
+        "icon": "arc-lighning.jpg"
+      },
+      {
+        "name": "Pegasus Charge",
+        "description": "Zeus commands Pegasus to charge at the enemy, stunning one ability for 2 rounds",
+        "active": true,
+        "variant": "debuff",
+        "debuffVariant": "stun",
+        "rounds": 2,
+        "value": 50000,
+        "icon": "aability_hunter_beastcall.jpg"
+      },
+      {
+        "name": "Aegis of Zeus",
+        "description": "Zeus uses his Aegis to defend himself from harm, reducing all incoming damage by 20% for 2 rounds.",
+        "active": true,
+        "variant": "buff",
+        "buffVariant": "resistanceBoost",
+        "rounds": 2,
+        "value": "20%",
+        "icon": "lightning-shield_hexagon.jpg"
+      },
+      {
+        "name": "Divine Authority",
+        "description": "As the God of gods and the ruler of Olympia, Zeus passively deals 10% more damage against all enemies.",
+        "active": false,
+        "variant": "buff",
+        "debuffVariant": "damageBoost",
+        "rounds": 1000,
+        "value": 10,
+        "icon": "spell_frost_wizardmark.jpg"
+      },
+      {
+        "name": "Ultimate: Fury of the Skies",
+        "description": "Zeus calls down the lightning from the sky to strike down his enemies 3 times, dealing 8,000 damage each time.",
+        "active": true,
+        "variant": "debuff",
+        "buffVariant": "damage",
+        "rounds": 3,
+        "value": [8000,8000,8000],
+        "icon": "Nimbus_icon.jpg"
+      }
+    ]
+  },
+  {
+    "name": "Poseidon",
+    "description": "The God of the Oceans, Commander of all bodies of water.",
+    "abilities": [
+      {
+        "name": "Water Drain",
+        "description": "Poseidon drains the water out of the enemies body, infusing himself with their power. Reduces the enemy's max energy by 20%, increasing Poseidon's max energy by 10%",
+        "active": true,
+        "variant": "Debuff",
+        "debuffVariant": "maxHealthDamage",
+        "rounds": 2,
+        "value":"20%",
+        "icon": "spell_shadow_siphonmana.jpg"
+      },
+      {
+        "name": "Fury of Atlantis",
+        "description": "Poseidon brings forth the fury of Atlantis, dealing 7,500 damage to the enemy",
+        "active": true,
+        "variant": "damage",
+        "value": 7500,
+        "icon": "spell_frost_icestorm.jpg"
+      },
+      {
+        "name": "Call of the Cyclops",
+        "description": "Poseidon calls his Cyclops to shield him in battle, providing a 7,500 shield that will expire when destroys",
+        "active": true,
+        "variant": "buff",
+        "buffVariant": "Shield",
+        "rounds": 10000,
+        "value": [7500],
+        "icon": "spell_frost_frostarmor.jpg"
+      },
+      {
+        "name": "Icey Veins",
+        "description": "Poseidon's watery figure reduces all incoming damage by 10%",
+        "active": false,
+        "variant": "buff",
+        "debuffVariant": "resistance",
+        "rounds": 100000,
+        "value": "10%",
+        "icon": "spell_frost_frostward.jpg"
+      },
+      {
+        "name": "Ultimate: Earth-Shaker",
+        "description": "Poseidon rumbles the earth beneath the feet of his enemies, dealing a massive 25,000 damage.",
+        "active": true,
+        "variant": "damage",
+        "value": [25000],
+        "icon": "spell_frost_frozencore.jpg"
+      }
+    ]
+  },
+  {
+    "name": "Hera",
+    "description": "The Goddess of Childbirth, The empress of the skies, The Divine Woman",
+    "abilities": [
+      {
+        "name": "The Curse of the Goddess",
+        "description": "Hera curses the enemy, making them suffer 3k damage each round for 3 rounds, this damage stacks up.",
+        "active": true,
+        "variant": "debuff",
+        "debuffVariant": "damage",
+        "rounds": 3,
+        "value":[ 3000, 3000, 3000 ],
+        "icon": "spell_mage_arcaneorb.jpg"
+      },
+      {
+        "name": "Arc Lightning",
+        "description": "asdasd",
+        "active": false,
+        "variant": "debuff",
+        "debuffVariant": "stun",
+        "rounds": 3,
+        "value": 50,
+        "icon": "arc-lighning.jpg"
+      },
+      {
+        "name": "Arc Lightning",
+        "description": "asdasd",
+        "active": false,
+        "variant": "buff",
+        "buffVariant": "damageBoost",
+        "rounds": 3,
+        "value": [25, 15, 5],
+        "icon": "arc-lighning.jpg"
+      },
+      {
+        "name": "Arc Lightning",
+        "description": "asdasd",
+        "active": false,
+        "variant": "debuff",
+        "debuffVariant": "stun",
+        "rounds": 3,
+        "value": 50,
+        "icon": "arc-lighning.jpg"
+      },
+      {
+        "name": "Arc Lightning",
+        "description": "asdasd",
+        "active": false,
+        "variant": "buff",
+        "buffVariant": "damageBoost",
+        "rounds": 3,
+        "value": [25, 15, 5],
+        "icon": "arc-lighning.jpg"
+      }
+    ]
+  },
+  {
+    "name": "Zeus",
+    "description": "asdasdasd",
+    "abilities": [
+      {
+        "name": "Arc Lightning",
+        "description": "asdasd",
+        "active": false,
+        "variant": "damage",
+        "value": 50,
+        "icon": "arc-lighning.jpg"
+      },
+      {
+        "name": "Arc Lightning",
+        "description": "asdasd",
+        "active": false,
+        "variant": "debuff",
+        "debuffVariant": "stun",
+        "rounds": 3,
+        "value": 50,
+        "icon": "arc-lighning.jpg"
+      },
+      {
+        "name": "Arc Lightning",
+        "description": "asdasd",
+        "active": false,
+        "variant": "buff",
+        "buffVariant": "damageBoost",
+        "rounds": 3,
+        "value": [25, 15, 5],
+        "icon": "arc-lighning.jpg"
+      },
+      {
+        "name": "Arc Lightning",
+        "description": "asdasd",
+        "active": false,
+        "variant": "debuff",
+        "debuffVariant": "stun",
+        "rounds": 3,
+        "value": 50,
+        "icon": "arc-lighning.jpg"
+      },
+      {
+        "name": "Arc Lightning",
+        "description": "asdasd",
+        "active": false,
+        "variant": "buff",
+        "buffVariant": "damageBoost",
+        "rounds": 3,
+        "value": [25, 15, 5],
+        "icon": "arc-lighning.jpg"
+      }
+    ]
+  },
+  {
+    "name": "Zeus",
+    "description": "asdasdasd",
+    "abilities": [
+      {
+        "name": "Arc Lightning",
+        "description": "asdasd",
+        "active": false,
+        "variant": "damage",
+        "value": 50,
+        "icon": "arc-lighning.jpg"
+      },
+      {
+        "name": "Arc Lightning",
+        "description": "asdasd",
+        "active": false,
+        "variant": "debuff",
+        "debuffVariant": "stun",
+        "rounds": 3,
+        "value": 50,
+        "icon": "arc-lighning.jpg"
+      },
+      {
+        "name": "Arc Lightning",
+        "description": "asdasd",
+        "active": false,
+        "variant": "buff",
+        "buffVariant": "damageBoost",
+        "rounds": 3,
+        "value": [25, 15, 5],
+        "icon": "arc-lighning.jpg"
+      },
+      {
+        "name": "Arc Lightning",
+        "description": "asdasd",
+        "active": false,
+        "variant": "debuff",
+        "debuffVariant": "stun",
+        "rounds": 3,
+        "value": 50,
+        "icon": "arc-lighning.jpg"
+      },
+      {
+        "name": "Arc Lightning",
+        "description": "asdasd",
+        "active": false,
+        "variant": "buff",
+        "buffVariant": "damageBoost",
+        "rounds": 3,
+        "value": [25, 15, 5],
+        "icon": "arc-lighning.jpg"
+      }
+    ]
+  }
+]
