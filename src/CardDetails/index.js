@@ -1,13 +1,9 @@
 import { createUseStyles } from "react-jss";
 import { Container, Row, Col } from "react-grid-system";
-import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
-import { GiUpgrade } from "react-icons/gi";
-import Hexagon from "react-hexagon";
 
-import ProgressBar from "@ramonak/react-progress-bar";
-import "react-circular-progressbar/dist/styles.css";
+import Card from "../components/Card";
 
-import AbilityCompact from "./AbilityCompant";
+import AbilityCompact from "./AbilityCompact";
 
 const useStyles = createUseStyles({
   root: {
@@ -87,7 +83,7 @@ const useStyles = createUseStyles({
     bottom: "1em",
     left: "4.1em",
   },
-   experienceText: {
+  experienceText: {
     position: "absolute",
     bottom: "2.6em",
     left: "3.5em",
@@ -99,8 +95,8 @@ const useStyles = createUseStyles({
   healthText: {
     position: "absolute",
     bottom: "-0.5em",
-    textAlign: 'center',
-    
+    textAlign: "center",
+
     left: "4.1em",
     color: "#151515",
     background: "#FFDD03",
@@ -147,66 +143,12 @@ const useStyles = createUseStyles({
 
 const CardDetail = () => {
   const classes = useStyles();
-  const percentage = 70;
 
   return (
     <Container className={classes.root}>
       <Row>
         <Col md={4}>
-          <div className={classes.mainCard}>
-            <Hexagon
-              diagonal={30}
-              style={{
-                stroke: "#FFDD03",
-                strokeWidth: 2,
-                display: "flex",
-                fill: "#151515",
-              }}
-              className={classes.hexa}
-            >
-              <text x="28%" y="68%" fill="#f8f8f8" data-reactid=".0.0.2.2:0">
-                S
-              </text>{" "}
-            </Hexagon>
-            <div className={classes.imageContainer}>
-              <div className={classes.imageDecor}>
-                <img className={classes.godImage} src="/Pictures/Zeus.jpg" />
-              </div>
-            </div>
-            <div className={classes.levelInfo}>
-              <div className={classes.experienceText}>856/1000</div>
-              <div className={classes.healthText}>200/1000</div>
-              <ProgressBar
-                className={classes.progress}
-                width={200}
-                completed={60}
-                baseBgColor="#f8f8f8"
-                bgColor="#151515"
-                isLabelVisible={false}
-                padding={3}
-              />
-
-              <CircularProgressbar
-                className={classes.progressBar}
-                value={percentage}
-                background="red"
-                backgroundPadding={4}
-                text={`4`}
-                circleRatio={0.6}
-                styles={buildStyles({
-                  rotation: -0.15,
-                  textSize: "30px",
-                  backgroundColor: "#c8c8c8",
-                  pathColor: "#151515",
-                  textColor: "#151515",
-                  trailColor: "#f8f8f8",
-                })}
-              />
-              <div className={classes.levelupButtonContainer}>
-                <GiUpgrade className={classes.levelupIcon} />
-              </div>
-            </div>
-          </div>
+          <Card />
         </Col>
         <Col md={8}>
           <div className={classes.colLeft}></div>
