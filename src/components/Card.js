@@ -105,7 +105,8 @@ const useStyles = createUseStyles({
     zIndex: 100,
   },
   message: {
-    padding: "0.75em",
+    padding: "0.25em",
+    fontSize: "0.85em",
     position: "absolute",
     background: "white",
     zIndex: 300,
@@ -115,8 +116,8 @@ const useStyles = createUseStyles({
     borderRadius: "10px",
     border: "1px solid rgba( 255, 255, 255, 0.18 )",
     color: "white",
-    right: "-4em",
-    top: "-0.5em",
+    right: "0.5em",
+    top: "5em",
   },
 });
 

@@ -33,6 +33,7 @@ const createGameState = (player1, player2, currentPlayer) => {
 
 // Actions are an array of functions that take a currentState and returns another currentState
 
+
 const nextGameState = (currentState) => (actions) => {
   if (!actions.length) return currentState;
   const ta = [...actions];
@@ -153,6 +154,66 @@ const nextRound = () => (currentState) => {
   }
 };
 
+const addBuff =
+  ({ icon, name, value, buffVariant, description, rounds }) =>
+  (currentState) => {
+    if (currentState.currentPlayer === 1) {
+      return {
+        ...currentState,
+        player2: {
+          ...currentState.player2,
+          buffs: [
+            ...currentState.player2.buffs,
+            { icon, name, value, buffVariant, description, rounds },
+          ],
+        },
+      };
+    } else {
+      return {
+        ...currentState,
+        player1: {
+          ...currentState.player1,
+          buffs: [
+            ...currentState.player1.buffs,
+            { icon, name, value, buffVariant, description, rounds },
+          ],
+        },
+      };
+    }
+  };
+
+const addDebuff =
+  ({ icon, value, name, debuffVariant, description, rounds }) =>
+  (currentState) => {
+    if (currentState.currentPlayer === 0) {
+      return {
+        ...currentState,
+        player2: {
+          ...currentState.player2,
+          deBuffs: [
+            ...currentState.player2.deBuffs,
+            { icon, name, value, debuffVariant, description, rounds },
+          ],
+        },
+      };
+    } else {
+      return {
+        ...currentState,
+        player1: {
+          ...currentState.player1,
+          deBuffs: [
+            ...currentState.player1.deBuffs,
+            { icon, name, value, debuffVariant, description, rounds },
+          ],
+        },
+      };
+    }
+  };
+
+const applyBuffs = () => (currentState) => {};
+
+const applyDebuffs = () => (currentState) => {};
+
 export {
   createGameState,
   nextGameState,
@@ -162,4 +223,6 @@ export {
   changeActionPointUsedInRound,
   addToLastRoundeAbilityUsed,
   nextRound,
+  addBuff,
+  addDebuff,
 };

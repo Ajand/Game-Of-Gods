@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-grid-system";
 import { createUseStyles } from "react-jss";
 import ProgressBar from "@ramonak/react-progress-bar";
@@ -17,6 +17,8 @@ import {
   addToLastRoundeAbilityUsed,
   changeActionPointUsedInRound,
   nextRound,
+  addBuff,
+  addDebuff,
 } from "./GameState";
 
 const useStyles = createUseStyles(() => ({
@@ -124,17 +126,59 @@ const useStyles = createUseStyles(() => ({
   },
 }));
 
+const getTwoRandomInt = (max) => {
+  var arr = [];
+  while (arr.length < 2) {
+    var r = Math.floor(Math.random() * (max + 1));
+    if (arr.indexOf(r) === -1) arr.push(r);
+  }
+  return arr;
+};
+
+const selectedCards = getTwoRandomInt(4);
+
 const Battle = () => {
   const classes = useStyles();
-  const p1 = Heroes[2];
-  const p2 = Heroes[4];
+  const p1 = Heroes[selectedCards[0]];
+  const p2 = Heroes[selectedCards[1]];
 
   console.log(p2);
 
   const [gameState, setGameState] = useState(
     createGameState(
-      { energy: 150000, rage: 0, image: p1.image, tier: p1.tier },
-      { energy: 150000, rage: 0, image: p2.image, tier: p2.tier }
+      {
+        energy: 150000,
+        rage: 0,
+        image: p1.image,
+        tier: p1.tier,
+        buffs: [
+          {
+            icon: p1.abilities[3].icon,
+            value: p1.abilities[3].value,
+            name: p1.abilities[3].name,
+            buffVariant: p1.abilities[3].buffVariant,
+            description: p1.abilities[3].description,
+            rounds: "∞",
+          },
+        ],
+      },
+      {
+        energy: 150000,
+        rage: 0,
+        image: p2.image,
+        tier: p2.tier,
+        buffs: [
+          {
+            icon: p2.abilities[3].icon,
+            value: p2.abilities[3].value,
+            name: p2.abilities[3].name,
+            buffVariant: p2.abilities[3].buffVariant,
+            description: p2.abilities[3].description,
+            rounds: "∞",
+          },
+        ],
+      },
+      0
     )
   );
 
@@ -174,6 +218,40 @@ const Battle = () => {
             )
           )
         );
+      case "Pegasus Charge":
+        return setGameState(
+          addDebuff(ability)(
+            addToLastRoundeAbilityUsed("Pegasus Charge")(
+              changeActionPointUsedInRound(1)(
+                changeRage(ability.rageConsume)(
+                  dealDamage(ability.value)(gameState)
+                )
+              )
+            )
+          )
+        );
+      case "Aegis of Zeus":
+        return setGameState(
+          addBuff(ability)(
+            addToLastRoundeAbilityUsed("Aegis of Zeus")(
+              changeActionPointUsedInRound(1)(
+                changeRage(ability.rageConsume)(gameState)
+              )
+            )
+          )
+        );
+      case "Ultimate: Fury of the Skies":
+        return setGameState(
+          addDebuff(ability)(
+            addToLastRoundeAbilityUsed("Ultimate: Fury of the Skies")(
+              changeActionPointUsedInRound(2)(
+                changeRage(ability.rageConsume)(
+                  dealDamage(ability.impactDamage)(gameState)
+                )
+              )
+            )
+          )
+        );
       // Posiden Abilities
       case "Trident Of Ocean":
         return setGameState(
@@ -181,6 +259,16 @@ const Battle = () => {
             changeActionPointUsedInRound(1)(
               changeRage(ability.rageConsume)(
                 dealDamage(ability.value)(gameState)
+              )
+            )
+          )
+        );
+      case "Water Drain":
+        return setGameState(
+          addDebuff(ability)(
+            addToLastRoundeAbilityUsed("Water Drain")(
+              changeActionPointUsedInRound(1)(
+                changeRage(ability.rageConsume)(gameState)
               )
             )
           )
@@ -195,10 +283,20 @@ const Battle = () => {
             )
           )
         );
+      case "Call of the Cyclops":
+        return setGameState(
+          addBuff(ability)(
+            addToLastRoundeAbilityUsed("Call of the Cyclops")(
+              changeActionPointUsedInRound(1)(
+                changeRage(ability.rageConsume)(gameState)
+              )
+            )
+          )
+        );
       case "Ultimate: Earth-Shaker":
         return setGameState(
           addToLastRoundeAbilityUsed("Ultimate: Earth-Shaker")(
-            changeActionPointUsedInRound(1)(
+            changeActionPointUsedInRound(2)(
               changeRage(ability.rageConsume)(
                 dealDamage(ability.value)(gameState)
               )
@@ -216,10 +314,47 @@ const Battle = () => {
             )
           )
         );
+      case "The Curse of the Goddess":
+        return setGameState(
+          addDebuff(ability)(
+            addToLastRoundeAbilityUsed("The Curse of the Goddess")(
+              changeActionPointUsedInRound(1)(
+                changeRage(ability.rageConsume)(
+                  dealDamage(ability.impactValue)(gameState)
+                )
+              )
+            )
+          )
+        );
+
+      case "The Divine Mother’s blessing":
+        return setGameState(
+          addBuff(ability)(
+            addToLastRoundeAbilityUsed("The Divine Mother’s blessing")(
+              changeActionPointUsedInRound(1)(
+                changeRage(ability.rageConsume)(
+                  heal(ability.impactValue)(gameState)
+                )
+              )
+            )
+          )
+        );
+      case "Divine Beauty":
+        return setGameState(
+          addDebuff(ability)(
+            addToLastRoundeAbilityUsed("Divine Beauty")(
+              changeActionPointUsedInRound(1)(
+                changeRage(ability.rageConsume)(
+                  dealDamage(ability.impactValue)(gameState)
+                )
+              )
+            )
+          )
+        );
       case "Supreme Goddess of the Skies":
         return setGameState(
           addToLastRoundeAbilityUsed("Supreme Goddess of the Skies")(
-            changeActionPointUsedInRound(1)(
+            changeActionPointUsedInRound(2)(
               changeRage(ability.rageConsume)(
                 dealDamage(ability.value)(gameState)
               )
@@ -237,10 +372,46 @@ const Battle = () => {
             )
           )
         );
+      case "The Shield-Maker":
+        return setGameState(
+          addBuff(ability)(
+            addToLastRoundeAbilityUsed("The Divine Mother’s blessing")(
+              changeActionPointUsedInRound(1)(
+                changeRage(ability.rageConsume)(
+                  heal(ability.impactValue)(gameState)
+                )
+              )
+            )
+          )
+        );
+      case "Call of the Goldmaidens":
+        return setGameState(
+          addBuff(ability)(
+            addToLastRoundeAbilityUsed("Call of the Goldmaidens")(
+              changeActionPointUsedInRound(1)(
+                changeRage(ability.rageConsume)(
+                  heal(ability.impactValue)(gameState)
+                )
+              )
+            )
+          )
+        );
+      case "The First Blacksmith":
+        return setGameState(
+          addBuff(ability)(
+            addToLastRoundeAbilityUsed("The First Blacksmith")(
+              changeActionPointUsedInRound(1)(
+                changeRage(ability.rageConsume)(
+                  heal(ability.impactValue)(gameState)
+                )
+              )
+            )
+          )
+        );
       case "Firestorm":
         return setGameState(
           addToLastRoundeAbilityUsed("Firestorm")(
-            changeActionPointUsedInRound(1)(
+            changeActionPointUsedInRound(2)(
               changeRage(ability.rageConsume)(
                 dealDamage(ability.value)(gameState)
               )
@@ -258,10 +429,45 @@ const Battle = () => {
             )
           )
         );
+      case "Flame Strike":
+        return setGameState(
+          addDebuff(ability)(
+            addToLastRoundeAbilityUsed("Flame Strike")(
+              changeActionPointUsedInRound(1)(
+                changeRage(ability.rageConsume)(
+                  dealDamage(ability.impactValue)(gameState)
+                )
+              )
+            )
+          )
+        );
+      case "Battle Roar":
+        return setGameState(
+          addDebuff(ability)(
+            addToLastRoundeAbilityUsed("Battle Roar")(
+              changeActionPointUsedInRound(1)(
+                changeRage(ability.rageConsume)(gameState)
+              )
+            )
+          )
+        );
+      case "Path of Flame":
+        return setGameState(
+          addDebuff(ability)(
+            addToLastRoundeAbilityUsed("Path of Flame")(
+              changeActionPointUsedInRound(1)(
+                changeRage(ability.rageConsume)(
+                  dealDamage(ability.impactValue)(gameState)
+                )
+              )
+            )
+          )
+        );
+
       case "Ultimate: Waster of Cities":
         return setGameState(
           addToLastRoundeAbilityUsed("Ultimate: Waster of Cities")(
-            changeActionPointUsedInRound(1)(
+            changeActionPointUsedInRound(2)(
               changeRage(ability.rageConsume)(
                 dealDamage(ability.value)(gameState)
               )
@@ -274,11 +480,18 @@ const Battle = () => {
     }
   };
 
-  const isAbilityDisabled = (rageConsume, active) => {
+  const isAbilityDisabled = (rageConsume, active, ability) => {
     if (!active) return false;
     const currentPlayer =
       gameState.currentPlayer == 0 ? gameState.player1 : gameState.player2;
+    const otherPlayer =
+      gameState.currentPlayer == 1 ? gameState.player1 : gameState.player2;
+    console.log(otherPlayer, currentPlayer);
     if (currentPlayer.rage < rageConsume) return true;
+    if (otherPlayer.deBuffs.find((debuff) => ability.name === debuff.name))
+      return true;
+    if (currentPlayer.buffs.find((buff) => ability.name === buff.name))
+      return true;
     return false;
   };
 
@@ -324,7 +537,12 @@ const Battle = () => {
                     onClick={() => {
                       if (
                         gameState.currentPlayer == 0 &&
-                        !(!ability.active && ability.active !== undefined)
+                        !(!ability.active && ability.active !== undefined) &&
+                        !isAbilityDisabled(
+                          ability.rageConsume,
+                          ability.active,
+                          ability
+                        )
                       ) {
                         actionAbilities(ability);
                       }
@@ -336,7 +554,8 @@ const Battle = () => {
                       className={`${classes.abilityContainer} ${
                         (isAbilityDisabled(
                           ability.rageConsume,
-                          ability.active
+                          ability.active,
+                          ability
                         ) ||
                           gameState.currentPlayer == 1) &&
                         classes.disabledAbility
@@ -346,7 +565,8 @@ const Battle = () => {
                         className={`${classes.abilityImage} ${
                           (isAbilityDisabled(
                             ability.rageConsume,
-                            ability.active
+                            ability.active,
+                            ability
                           ) ||
                             gameState.currentPlayer == 1) &&
                           classes.disabledImage
@@ -354,7 +574,8 @@ const Battle = () => {
                           !(
                             isAbilityDisabled(
                               ability.rageConsume,
-                              ability.active
+                              ability.active,
+                              ability
                             ) || gameState.currentPlayer == 1
                           ) &&
                           !ability.active &&
@@ -373,6 +594,58 @@ const Battle = () => {
                   </div>
                 );
               })}
+            </div>
+            <div className={classes.buffDebuffContainer}>
+              <div className={classes.buffContainer}>
+                {gameState.player1.buffs.map((buff, index) => (
+                  <>
+                    <div
+                      data-tip
+                      data-for={`buff${buff.name}`}
+                      key={index}
+                      className={classes.buff}
+                    >
+                      <img
+                        className={classes.buffMage}
+                        src={`/Pictures/${buff.icon}`}
+                      />
+                      <div className={classes.roundsCounter}>{buff.rounds}</div>
+                    </div>
+                    <ReactTooltip id={`buff${buff.name}`}>
+                      <div className={classes.abilityToolTip}>
+                        <h1 className={classes.abilityName}>{buff.name}</h1>
+                        <span>{buff.description}</span>
+                      </div>
+                    </ReactTooltip>
+                  </>
+                ))}
+              </div>
+              <div className={classes.debuffContainer}>
+                {gameState.player1.deBuffs.map((debuff, index) => (
+                  <>
+                    <div
+                      data-tip
+                      data-for={`debuff${debuff.name}`}
+                      key={index}
+                      className={classes.debuff}
+                    >
+                      <img
+                        className={classes.buffMage}
+                        src={`/Pictures/${debuff.icon}`}
+                      />
+                      <div className={classes.roundsCounter}>
+                        {debuff.rounds}
+                      </div>
+                    </div>
+                    <ReactTooltip id={`debuff${debuff.name}`}>
+                      <div className={classes.abilityToolTip}>
+                        <h1 className={classes.abilityName}>{debuff.name}</h1>
+                        <span>{debuff.description}</span>
+                      </div>
+                    </ReactTooltip>
+                  </>
+                ))}
+              </div>
             </div>
           </div>
         </Col>
@@ -427,7 +700,8 @@ const Battle = () => {
                       className={`${classes.abilityContainer} ${
                         (isAbilityDisabled(
                           ability.rageConsume,
-                          ability.active
+                          ability.active,
+                          ability
                         ) ||
                           gameState.currentPlayer == 0) &&
                         classes.disabledAbility
@@ -437,7 +711,8 @@ const Battle = () => {
                         className={`${classes.abilityImage} ${
                           (isAbilityDisabled(
                             ability.rageConsume,
-                            ability.active
+                            ability.active,
+                            ability
                           ) ||
                             gameState.currentPlayer == 0) &&
                           classes.disabledImage
@@ -445,7 +720,8 @@ const Battle = () => {
                           !(
                             isAbilityDisabled(
                               ability.rageConsume,
-                              ability.active
+                              ability.active,
+                              ability
                             ) || gameState.currentPlayer == 0
                           ) &&
                           !ability.active &&
@@ -467,50 +743,54 @@ const Battle = () => {
             </div>
             <div className={classes.buffDebuffContainer}>
               <div className={classes.buffContainer}>
-                <div className={classes.buff}>
-                  <img
-                    className={classes.buffMage}
-                    src="/Pictures/spell_shadow_plaguecloud.png"
-                  />
-                  <div className={classes.roundsCounter}>3</div>
-                </div>
-                <div className={classes.buff}>
-                  <img
-                    className={classes.buffMage}
-                    src="/Pictures/spell_shadow_plaguecloud.png"
-                  />
-                  <div className={classes.roundsCounter}>3</div>
-                </div>
-                <div className={classes.buff}>
-                  <img
-                    className={classes.buffMage}
-                    src="/Pictures/spell_shadow_plaguecloud.png"
-                  />
-                  <div className={classes.roundsCounter}>3</div>
-                </div>
+                {gameState.player2.buffs.map((buff, index) => (
+                  <>
+                    <div
+                      data-tip
+                      data-for={`buff${buff.name}`}
+                      key={index}
+                      className={classes.buff}
+                    >
+                      <img
+                        className={classes.buffMage}
+                        src={`/Pictures/${buff.icon}`}
+                      />
+                      <div className={classes.roundsCounter}>{buff.rounds}</div>
+                    </div>
+                    <ReactTooltip id={`buff${buff.name}`}>
+                      <div className={classes.abilityToolTip}>
+                        <h1 className={classes.abilityName}>{buff.name}</h1>
+                        <span>{buff.description}</span>
+                      </div>
+                    </ReactTooltip>
+                  </>
+                ))}
               </div>
               <div className={classes.debuffContainer}>
-                <div className={classes.debuff}>
-                  <img
-                    className={classes.buffMage}
-                    src="/Pictures/spell_shadow_plaguecloud.png"
-                  />
-                  <div className={classes.roundsCounter}>3</div>
-                </div>
-                <div className={classes.debuff}>
-                  <img
-                    className={classes.buffMage}
-                    src="/Pictures/spell_shadow_plaguecloud.png"
-                  />
-                  <div className={classes.roundsCounter}>3</div>
-                </div>
-                <div className={classes.debuff}>
-                  <img
-                    className={classes.buffMage}
-                    src="/Pictures/spell_shadow_plaguecloud.png"
-                  />
-                  <div className={classes.roundsCounter}>3</div>
-                </div>
+                {gameState.player2.deBuffs.map((debuff, index) => (
+                  <>
+                    <div
+                      data-tip
+                      data-for={`debuff${debuff.name}`}
+                      key={index}
+                      className={classes.debuff}
+                    >
+                      <img
+                        className={classes.buffMage}
+                        src={`/Pictures/${debuff.icon}`}
+                      />
+                      <div className={classes.roundsCounter}>
+                        {debuff.rounds}
+                      </div>
+                    </div>
+                    <ReactTooltip id={`debuff${debuff.name}`}>
+                      <div className={classes.abilityToolTip}>
+                        <h1 className={classes.abilityName}>{debuff.name}</h1>
+                        <span>{debuff.description}</span>
+                      </div>
+                    </ReactTooltip>
+                  </>
+                ))}
               </div>
             </div>
           </div>
