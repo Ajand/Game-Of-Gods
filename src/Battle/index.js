@@ -496,7 +496,7 @@ const Battle = () => {
   };
 
   return (
-    <Container>
+    <Container style={{marginTop: '2em'}}>
       <Row>
         <Col className={classes.leftCol} md={6}>
           <div>
