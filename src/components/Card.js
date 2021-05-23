@@ -104,14 +104,36 @@ const useStyles = createUseStyles({
     top: "-2em",
     zIndex: 100,
   },
+  message: {
+    padding: "0.75em",
+    position: "absolute",
+    background: "white",
+    zIndex: 300,
+    background: "rgba( 21, 21, 21, 0.7 )",
+    boxShadow: "0 8px 32px 0 rgba( 31, 38, 135, 0.37 )",
+    backdropFilter: "blur( 4px )",
+    borderRadius: "10px",
+    border: "1px solid rgba( 255, 255, 255, 0.18 )",
+    color: "white",
+    right: "-4em",
+    top: "-0.5em",
+  },
 });
 
-const Card = ({ image, level, fight }) => {
+const Card = ({ image, level, fight, tier,usedSpells = [] }) => {
   const classes = useStyles();
   const percentage = 70;
 
   return (
     <div className={classes.mainCard}>
+      {!!usedSpells.length && (
+        <div className={classes.message}>
+          {usedSpells.map((us, index) => (
+            <p key={`${us}${index}`}>{us}</p>
+          ))}
+        </div>
+      )}
+
       <Hexagon
         diagonal={30}
         style={{
@@ -123,8 +145,8 @@ const Card = ({ image, level, fight }) => {
         className={classes.hexa}
       >
         <text x="28%" y="68%" fill="#f8f8f8" data-reactid=".0.0.2.2:0">
-          S
-        </text>{" "}
+          {tier}
+        </text>
       </Hexagon>
       <div className={classes.imageContainer}>
         <div className={classes.imageDecor}>
