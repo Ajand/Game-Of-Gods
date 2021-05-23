@@ -582,7 +582,7 @@ const Battle = () => {
                           ability.active !== undefined &&
                           classes.passiveImage
                         }`}
-                        src={`/Pictures/${ability.icon}`}
+                        src={`Pictures/${ability.icon}`}
                       />
                     </div>
                     <ReactTooltip id={`ability${ability.name}`}>
@@ -607,7 +607,7 @@ const Battle = () => {
                     >
                       <img
                         className={classes.buffMage}
-                        src={`/Pictures/${buff.icon}`}
+                        src={`Pictures/${buff.icon}`}
                       />
                       <div className={classes.roundsCounter}>{buff.rounds}</div>
                     </div>
@@ -631,7 +631,7 @@ const Battle = () => {
                     >
                       <img
                         className={classes.buffMage}
-                        src={`/Pictures/${debuff.icon}`}
+                        src={`Pictures/${debuff.icon}`}
                       />
                       <div className={classes.roundsCounter}>
                         {debuff.rounds}
@@ -728,7 +728,7 @@ const Battle = () => {
                           ability.active !== undefined &&
                           classes.passiveImage
                         }`}
-                        src={`/Pictures/${ability.icon}`}
+                        src={`Pictures/${ability.icon}`}
                       />
                     </div>
                     <ReactTooltip id={`ability${ability.name}`}>
@@ -753,7 +753,7 @@ const Battle = () => {
                     >
                       <img
                         className={classes.buffMage}
-                        src={`/Pictures/${buff.icon}`}
+                        src={`Pictures/${buff.icon}`}
                       />
                       <div className={classes.roundsCounter}>{buff.rounds}</div>
                     </div>
@@ -777,7 +777,7 @@ const Battle = () => {
                     >
                       <img
                         className={classes.buffMage}
-                        src={`/Pictures/${debuff.icon}`}
+                        src={`Pictures/${debuff.icon}`}
                       />
                       <div className={classes.roundsCounter}>
                         {debuff.rounds}
