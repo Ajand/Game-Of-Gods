@@ -4,4 +4,4 @@ https://ajand.github.io/crypto-gods/
 
 Project Whitepaper:
 
-https://ajand.github.io/crypto-gods/WhitePapyrus.pdf
+https://github.com/Ajand/crypto-gods/blob/gh-pages/WhitePapyrus.pdf
