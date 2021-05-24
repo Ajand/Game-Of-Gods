@@ -1,26 +1,26 @@
 {
   "files": {
     "main.css": "/crypto-gods/static/css/main.7209a288.chunk.css",
-    "main.js": "/crypto-gods/static/js/main.135caf71.chunk.js",
-    "main.js.map": "/crypto-gods/static/js/main.135caf71.chunk.js.map",
+    "main.js": "/crypto-gods/static/js/main.0137a291.chunk.js",
+    "main.js.map": "/crypto-gods/static/js/main.0137a291.chunk.js.map",
     "runtime-main.js": "/crypto-gods/static/js/runtime-main.37c3a3b2.js",
     "runtime-main.js.map": "/crypto-gods/static/js/runtime-main.37c3a3b2.js.map",
     "static/css/2.6c0f60ba.chunk.css": "/crypto-gods/static/css/2.6c0f60ba.chunk.css",
-    "static/js/2.e5ba8505.chunk.js": "/crypto-gods/static/js/2.e5ba8505.chunk.js",
-    "static/js/2.e5ba8505.chunk.js.map": "/crypto-gods/static/js/2.e5ba8505.chunk.js.map",
+    "static/js/2.24142b2f.chunk.js": "/crypto-gods/static/js/2.24142b2f.chunk.js",
+    "static/js/2.24142b2f.chunk.js.map": "/crypto-gods/static/js/2.24142b2f.chunk.js.map",
     "static/js/3.fd2e964c.chunk.js": "/crypto-gods/static/js/3.fd2e964c.chunk.js",
     "static/js/3.fd2e964c.chunk.js.map": "/crypto-gods/static/js/3.fd2e964c.chunk.js.map",
     "index.html": "/crypto-gods/index.html",
     "static/css/2.6c0f60ba.chunk.css.map": "/crypto-gods/static/css/2.6c0f60ba.chunk.css.map",
     "static/css/main.7209a288.chunk.css.map": "/crypto-gods/static/css/main.7209a288.chunk.css.map",
-    "static/js/2.e5ba8505.chunk.js.LICENSE.txt": "/crypto-gods/static/js/2.e5ba8505.chunk.js.LICENSE.txt",
+    "static/js/2.24142b2f.chunk.js.LICENSE.txt": "/crypto-gods/static/js/2.24142b2f.chunk.js.LICENSE.txt",
     "static/media/logo.6ce24c58.svg": "/crypto-gods/static/media/logo.6ce24c58.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.37c3a3b2.js",
     "static/css/2.6c0f60ba.chunk.css",
-    "static/js/2.e5ba8505.chunk.js",
+    "static/js/2.24142b2f.chunk.js",
     "static/css/main.7209a288.chunk.css",
-    "static/js/main.135caf71.chunk.js"
+    "static/js/main.0137a291.chunk.js"
   ]
 }
