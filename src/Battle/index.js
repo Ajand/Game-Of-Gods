@@ -124,6 +124,33 @@ const useStyles = createUseStyles(() => ({
     top: 0,
     right: 0,
   },
+  info: {
+    background: "#FFDD03",
+    position: "fixed",
+    top: 0,
+    left: 0,
+    padding: "2.5em",
+    zIndex: 500,
+    textAlign: "center",
+  },
+  buttons: {
+    marginTop: "2em",
+  },
+  whitePaperButton: {
+    background: "#151515",
+    padding: "5px 20px 8px",
+    display: "inline-block",
+    boxSizing: "border-box",
+    color: "white",
+  },
+  removeButton: {
+    padding: "5px 20px",
+    height: 50,
+    marginLeft: "2em",
+    display: "inline-block",
+    boxSizing: "border-box",
+    cursor: "pointer",
+  },
 }));
 
 const getTwoRandomInt = (max) => {
@@ -142,13 +169,14 @@ const Battle = () => {
   const p1 = Heroes[selectedCards[0]];
   const p2 = Heroes[selectedCards[1]];
 
-  console.log(p2);
+  const [show, setShow] = useState(true);
 
   const [gameState, setGameState] = useState(
     createGameState(
       {
         energy: 150000,
         rage: 0,
+        name: p1.name,
         image: p1.image,
         tier: p1.tier,
         buffs: [
@@ -167,6 +195,8 @@ const Battle = () => {
         rage: 0,
         image: p2.image,
         tier: p2.tier,
+        name: p2.name,
+
         buffs: [
           {
             icon: p2.abilities[3].icon,
@@ -496,16 +526,47 @@ const Battle = () => {
   };
 
   return (
-    <Container style={{marginTop: '2em'}}>
+    <Container style={{ marginTop: "2em" }}>
+      {show && (
+        <div className={classes.info}>
+          <p className={classes.infoParagraph}>
+            Hello. This prototype is just for displaying the gameplay of a
+            primitive battle in CryptoGods. These God Cards are going to be NFTs
+            that need staked SNX to be upgraded and that SNX cannot be withdrawn
+            and de-staked. The concept of the game along with the mechanics and
+            details are available in our "White Papyrus" and for understanding
+            this game, we strongly suggest you read that document. This screen
+            was not designed responsive, so please browse on desktop.
+          </p>
+          <div className={classes.buttons}>
+            <a
+              href="https://github.com/Ajand/crypto-gods/blob/gh-pages/WhitePapyrus.pdf"
+              target="_blank"
+              className={classes.whitePaperButton}
+            >
+              White Papyrus
+            </a>
+
+            <div
+              className={classes.removeButton}
+              onClick={() => setShow(false)}
+            >
+              X
+            </div>
+          </div>
+        </div>
+      )}
+
       <Row>
         <Col className={classes.leftCol} md={6}>
           <div>
             <Card
-              image={gameState.player1.image}
+              image={`${gameState.player1.image}`}
               level={4}
               usedSpells={gameState.player1.lastRoundAbilityUsed}
               fight={true}
               tier={gameState.player1.tier}
+              name={gameState.player1.name}
             />
             <div className={classes.energyAndRageBar}>
               <ProgressBar
@@ -657,6 +718,7 @@ const Battle = () => {
               usedSpells={gameState.player2.lastRoundAbilityUsed}
               fight={true}
               tier={gameState.player2.tier}
+              name={gameState.player2.name}
             />
             <div className={classes.energyAndRageBar}>
               <ProgressBar

@@ -18,6 +18,7 @@ const createGameState = (player1, player2, currentPlayer) => {
       deBuffs: [],
       lastRoundAbilityUsed: [],
       tier: player1.tier,
+      ...player1
     },
     player2: {
       image: player2.image,
@@ -27,6 +28,7 @@ const createGameState = (player1, player2, currentPlayer) => {
       deBuffs: [],
       lastRoundAbilityUsed: [],
       tier: player2.tier,
+      ...player2
     },
   };
 };

@@ -119,9 +119,23 @@ const useStyles = createUseStyles({
     right: "0.5em",
     top: "5em",
   },
+  nameContainer: {
+    background: "#151515",
+    display: "inline-block",
+    position: 'absolute',
+    padding: "1px 10px",
+    zIndex: 400,
+    border: "1px solid #151515",
+    top: -25,
+    left: 20,
+    borderRadius: 1000,
+    color: "#FFDD03",
+    fontSize: '1.5em'
+  
+  }
 });
 
-const Card = ({ image, level, fight, tier,usedSpells = [] }) => {
+const Card = ({ image, name , level, fight, tier,usedSpells = [] }) => {
   const classes = useStyles();
   const percentage = 70;
 
@@ -149,6 +163,9 @@ const Card = ({ image, level, fight, tier,usedSpells = [] }) => {
           {tier}
         </text>
       </Hexagon>
+      <div className={classes.nameContainer}>
+        {name}
+      </div>
       <div className={classes.imageContainer}>
         <div className={classes.imageDecor}>
           <img className={classes.godImage} src={image} />
