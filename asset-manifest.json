@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/crypto-gods/static/css/main.7209a288.chunk.css",
-    "main.js": "/crypto-gods/static/js/main.0137a291.chunk.js",
-    "main.js.map": "/crypto-gods/static/js/main.0137a291.chunk.js.map",
+    "main.js": "/crypto-gods/static/js/main.cab6d858.chunk.js",
+    "main.js.map": "/crypto-gods/static/js/main.cab6d858.chunk.js.map",
     "runtime-main.js": "/crypto-gods/static/js/runtime-main.37c3a3b2.js",
     "runtime-main.js.map": "/crypto-gods/static/js/runtime-main.37c3a3b2.js.map",
     "static/css/2.6c0f60ba.chunk.css": "/crypto-gods/static/css/2.6c0f60ba.chunk.css",
@@ -21,6 +21,6 @@
     "static/css/2.6c0f60ba.chunk.css",
     "static/js/2.24142b2f.chunk.js",
     "static/css/main.7209a288.chunk.css",
-    "static/js/main.0137a291.chunk.js"
+    "static/js/main.cab6d858.chunk.js"
   ]
 }
